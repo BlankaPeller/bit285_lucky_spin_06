@@ -1,4 +1,4 @@
-﻿@model LuckySpin.Models.Player
+﻿@model LuckySpin.ViewModels.IndexViewModel
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     Layout = "_Layout";
@@ -8,7 +8,7 @@
 <form asp-action="Index" asp-controller="Spinner">
     <fieldset>
         <label>
-            <input asp-for="FirstName" value="Your First Name"/>
+            <input asp-for="FirstName" value="Your First Name" />
             <span asp-validation-for="FirstName"></span>
         </label>
         <label>
@@ -16,7 +16,7 @@
                 <option selected disabled>Luck Number</option>
                 <option>1</option>
                 <option>2</option>
-                <option selected="selected" >3</option>
+                <option selected="selected">3</option>
                 <option>4</option>
                 <option>5</option>
                 <option>6</option>

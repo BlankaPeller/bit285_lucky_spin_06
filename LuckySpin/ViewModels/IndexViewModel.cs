@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 
-namespace LuckySpin.Models
+namespace LuckySpin.ViewModels
 {
     public class IndexViewModel
     {

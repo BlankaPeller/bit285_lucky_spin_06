@@ -32,14 +32,16 @@ namespace LuckySpin.Controllers
         }
         
         [HttpPost]
-        public IActionResult Index(Player player) //TODO: Update Index() to receive form data as IndexViewModel
+        public IActionResult Index(Player player, IndexViewModel IndexViewModel) //TODO: Update Index() to receive form data as IndexViewModel
         {
             if (!ModelState.IsValid) { return View(); } //Check for missing data
 
             //TODO: Complete adding Player data to store in the repoService
             repoService.Player = new Player
             {
-                //FirstName = indexVM.FirstName,
+                FirstName = IndexViewModel.FirstName,
+                Luck = IndexViewModel.Luck,
+                StartingBalance = (int)IndexViewModel.StartingBalance,
             };
 
             return RedirectToAction("Spin");
@@ -51,11 +53,12 @@ namespace LuckySpin.Controllers
                
         public IActionResult Spin() //Start a Spin WITHOUT data
         {
-         //CHARGE 
+            //CHARGE 
             // TODO: Load Player balance from the repoService
-            decimal balance;
+            decimal balance = repoService.Player.StartingBalance;
 
             //TODO: Charge $0.50 to spin
+            if 
 
 
          //SPIN
