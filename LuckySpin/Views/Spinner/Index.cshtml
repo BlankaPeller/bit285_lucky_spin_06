@@ -8,7 +8,7 @@
 <form asp-action="Index" asp-controller="Spinner">
     <fieldset>
         <label>
-            <input asp-for="FirstName" value="Ian"/>
+            <input asp-for="FirstName" value="Your First Name"/>
             <span asp-validation-for="FirstName"></span>
         </label>
         <label>
@@ -27,7 +27,7 @@
             <span asp-validation-for="Luck"></span>
         </label>
         <label asp-for="StartingBalance">
-            <input asp-for="StartingBalance" value="4.5" />
+            <input asp-for="StartingBalance" value="Starting balance between $3 and $10" />
         </label>
     </fieldset>
     <input type="submit" value="Start the Game" />
