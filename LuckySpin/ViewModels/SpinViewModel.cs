@@ -32,6 +32,7 @@ namespace LuckySpin.ViewModels
         public string PlayerName { get; set; }
 
         public string CurrentBalance { get; set; }
+
     }
 }
 

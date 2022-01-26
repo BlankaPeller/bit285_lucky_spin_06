@@ -39,9 +39,10 @@ namespace LuckySpin.Controllers
             //TODO: Complete adding Player data to store in the repoService
             repoService.Player = new Player
             {
-                FirstName = IndexViewModel.FirstName,
-                Luck = IndexViewModel.Luck,
-                StartingBalance = (int)IndexViewModel.StartingBalance,
+                PlayerId = player.PlayerId,
+                FirstName = player.FirstName,
+                Luck = player.Luck,
+                StartingBalance = (int)player.StartingBalance,
             };
 
             return RedirectToAction("Spin");
@@ -55,28 +56,44 @@ namespace LuckySpin.Controllers
         {
             //CHARGE 
             // TODO: Load Player balance from the repoService
-            decimal balance = repoService.Player.StartingBalance;
 
             //TODO: Charge $0.50 to spin
-            if 
+            repoService.Player.StartingBalance -= 0.50m;
+            decimal balance = repoService.Player.StartingBalance;
 
 
-         //SPIN
+            //SPIN
             //TODO: Complete adding data to a new SpinViewModel to gather items for the View
             SpinViewModel spinVM = new SpinViewModel
             {
-                //CurrentBalance = string.Format(new CultureInfo("en-SG", false), "{0:C2}", balance),
+                CurrentBalance = string.Format(new CultureInfo("en-SG", false), "{0:C2}", balance),
+                PlayerName = repoService.Player.FirstName,
+                PlayerLuck = repoService.Player.Luck,
+
             };
 
-         //GAMEPLAY
+            //GAMEPLAY
             //TODO: Check the Balance to see if the game is over
+            if (balance < 0.50m)
+            {
+                return RedirectToAction("LuckList");
+            }
 
             //TODO: Pay $1.00 if Winning
 
-
-         //UPDATE DATA STORE
+            if (spinVM.IsWinning)
+            {
+                repoService.Player.StartingBalance += 1.00m;
+                spinVM.CurrentBalance = string.Format(new CultureInfo("en-SG", false), "{0:C2}", repoService.Player.StartingBalance);
+            }
+            //UPDATE DATA STORE
             //TODO: Save balance to repoService
-
+            Spin spin = new Spin
+            {
+                Player = repoService.Player,
+                IsWinning = spinVM.IsWinning
+            };
+            repoService.AddSpin(spin);
 
             //TODO: Use the repoService to add a spin to the repository
 

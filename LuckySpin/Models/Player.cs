@@ -9,6 +9,6 @@ namespace LuckySpin.Models
 
         public int Luck { get; set; }
 
-        public int StartingBalance { get; set; }
+        public decimal StartingBalance { get; set; }
     }
 }

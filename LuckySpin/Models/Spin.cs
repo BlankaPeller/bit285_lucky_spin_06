@@ -8,7 +8,7 @@ namespace LuckySpin.Models
 
         public long SpinId { get; set; }
 
-        public bool IsWInning { get; set; }
+        public bool IsWinning { get; set; }
     }
 
 }
